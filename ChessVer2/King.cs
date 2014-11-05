@@ -6,26 +6,29 @@ using System.Threading.Tasks;
 
 namespace ChessVer2
 {
-    public class Queen:ChessPiece
+    class King:ChessPiece
     {
-        public Queen(int x, int y)
+        public King(int x, int y)
         {
-
+            Name = "K";
             PosX = x;
             PosY = y;
-            Name = "d";
             Coordinates = new List<string>();
 
-            //Piece movements
+            //PieceMovement.
 
-            string moveUp = "0,-1.7";
-            string moveRightDiagonallyUp = "1,-1.7";
-            string moveRight ="1,0.7";
-            string moveRightDiagonallyDown ="1,1.7";
-            string moveDown = "0,1.7";
-            string moveLeftDiagonallyDown="-1,1.7";
-            string moveLeft = "-1,0.7";
-            string moveLeftDiagonallyUp = "-1,-1.7";
+
+
+            string moveUp = "0,-1.1";
+            string moveRightDiagonallyUp = "1,-1.1";
+            string moveRight = "1,0.1";
+            string moveRightDiagonallyDown = "1,1.1";
+            string moveDown = "0,1.1";
+            string moveLeftDiagonallyDown = "-1,1.1";
+            string moveLeft = "-1,0";
+            string moveLeftDiagonallyUp = "-1,-1.1";
+
+            //List<string> Coordinates = new List <string>();
 
             Coordinates.Add(moveUp);
             Coordinates.Add(moveRightDiagonallyUp);
@@ -35,8 +38,6 @@ namespace ChessVer2
             Coordinates.Add(moveLeftDiagonallyDown);
             Coordinates.Add(moveLeft);
             Coordinates.Add(moveLeftDiagonallyUp);
-
         }
-
     }
 }

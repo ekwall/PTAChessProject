@@ -12,7 +12,7 @@ namespace ChessVer2
 
         public Knight(int x, int y)
         {
-            Name = "K";
+            Name = "L";
 
             PosX = x;
             PosY = y;

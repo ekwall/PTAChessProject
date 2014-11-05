@@ -45,6 +45,7 @@
     <Compile Include="ChessPiece.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="IPlayer.cs" />
+    <Compile Include="King.cs" />
     <Compile Include="Knight.cs" />
     <Compile Include="Pawn.cs" />
     <Compile Include="Player.cs" />
