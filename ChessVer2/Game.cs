@@ -102,31 +102,26 @@ namespace ChessVer2
             Bishop bishop2 = new Bishop(5,7);
             PieceList.Add(bishop2);
 
-            Queen queen = new Queen(3,7);
+           Queen queen = new Queen(3,7);
             PieceList.Add(queen);
+
+            /* Pawn pawn = new Pawn(0,6);
+            PieceList.Add(pawn);
+
+            Pawn pawn2 = new Pawn(1, 6);
+            PieceList.Add(pawn2);
+
+            Pawn pawn3 = new Pawn(2, 6);
+            PieceList.Add(pawn3);
+
+            Pawn pawn4 = new Pawn(4, 4);
+            PieceList.Add(pawn4);*/
+
             
 
-            /*Queen queen=new Queen();
-            queen.PosX=3;
-            queen.PosY=3;
-            PieceList.Add(queen);
+            
 
-            Bishop bishop = new Bishop();
-            bishop.PosX = 2;
-            bishop.PosY = 2;
-            PieceList.Add(bishop);*/
-
-            /*for (int i = 0; i < 7; i++)
-			{
-
-                Pawn pawn = new Pawn();
-                pawn.PosX = i;
-                pawn.PosY = 6;
-                PieceList.Add(pawn);
-                
-
-			 
-			}*/
+           
             
            
 
@@ -174,15 +169,18 @@ namespace ChessVer2
         public string GetCoordinates(ChessPiece pieceToMove)
         {
             int randNumber = GetRandomNumber(pieceToMove.TurnAvailableMoves[0]);
+
             string Coords = pieceToMove.TurnAvailableMoves[0][randNumber];
+
             return Coords;
         }
 
         public void MovePiece(ChessPiece pieceToMove, string coordinates)
         {
-            string[] newCoord = coordinates.Split(',');
-            int newX = int.Parse(newCoord[0]);
-            int newY = int.Parse(newCoord[1]);
+            string[] newCoordX = coordinates.Split(',');
+            string[] newCoordY = newCoordX[1].Split('.');
+            int newX = int.Parse(newCoordX[0]);
+            int newY = int.Parse(newCoordY[0]);
            
             Console.SetCursorPosition(pieceToMove.PosX, pieceToMove.PosY);
             Console.Write(" ");
@@ -197,8 +195,13 @@ namespace ChessVer2
         public int GetRandomNumber(List<string> coords)
         {
             Random rnd = new Random();
+            
             int max = coords.Count;
             int min = 0;
+            if (max == min)
+            {
+                return 0;
+            }
             int randomNumber = rnd.Next(min, max);
             return randomNumber;
         }
@@ -311,7 +314,7 @@ namespace ChessVer2
                     count++;
                     Console.SetCursorPosition(20, 16);
                     Console.WriteLine("Friendly piece in the way {0} times", count);
-                    System.Threading.Thread.Sleep(500);
+                    System.Threading.Thread.Sleep(100);
                     return true;
                 }
             }

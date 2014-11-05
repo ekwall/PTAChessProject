@@ -10,20 +10,28 @@ namespace ChessVer2
     {
 
 
-        public Pawn()
+        public Pawn(int x, int y)
         {
-            
+
+            PosX = x;
+            PosY = y;
+            Name = "P";
             Coordinates = new List<string>();
 
-            string moveUp = "0,-1.7";
-            string moveDown = "0,1.7";
-            string moveLeft = "-1,0.7";
-            string moveRight = "1,0.7";
+            string moveUp = "0,-1.1";
+            string moveDown = "0,1.1";
+            
+          
+            
+
 
             Coordinates.Add(moveUp);
             Coordinates.Add(moveDown);
-            Coordinates.Add(moveLeft);
-            Coordinates.Add(moveRight);
+            
+            
+           
+            
+            
 
         }
     }
