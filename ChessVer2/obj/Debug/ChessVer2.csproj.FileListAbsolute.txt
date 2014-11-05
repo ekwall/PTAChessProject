@@ -22,3 +22,9 @@ C:\Users\Andreas\Documents\Visual Studio 2013\Projects\ChessGame\nongitChess1.2\
 C:\Users\Andreas\Documents\Visual Studio 2013\Projects\ChessGame\nongitChess1.2\ChessVer2\bin\Debug\ChessVer2.exe
 C:\Users\Andreas\Documents\Visual Studio 2013\Projects\ChessGame\nongitChess1.2\ChessVer2\bin\Debug\ChessVer2.pdb
 C:\Users\Andreas\Documents\Visual Studio 2013\Projects\ChessGame\nongitChess1.2\ChessVer2\obj\Debug\ChessVer2.csprojResolveAssemblyReference.cache
+C:\Users\Andreas\Documents\Visual Studio 2013\Projects\ChessGame\ChessProjectNewMovement\ChessVer2\bin\Debug\ChessVer2.exe.config
+C:\Users\Andreas\Documents\Visual Studio 2013\Projects\ChessGame\ChessProjectNewMovement\ChessVer2\obj\Debug\ChessVer2.exe
+C:\Users\Andreas\Documents\Visual Studio 2013\Projects\ChessGame\ChessProjectNewMovement\ChessVer2\obj\Debug\ChessVer2.pdb
+C:\Users\Andreas\Documents\Visual Studio 2013\Projects\ChessGame\ChessProjectNewMovement\ChessVer2\bin\Debug\ChessVer2.exe
+C:\Users\Andreas\Documents\Visual Studio 2013\Projects\ChessGame\ChessProjectNewMovement\ChessVer2\bin\Debug\ChessVer2.pdb
+C:\Users\Andreas\Documents\Visual Studio 2013\Projects\ChessGame\ChessProjectNewMovement\ChessVer2\obj\Debug\ChessVer2.csprojResolveAssemblyReference.cache
