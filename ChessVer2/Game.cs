@@ -12,6 +12,12 @@ namespace ChessVer2
         private int OOBCounter = 0;
         private int count = 0;
         private int movestried = 0;
+        private int CountRndOne = 0;
+        private int CountRndTwo= 0;
+
+        private int countSameTile = 0;
+
+        public List<string> AllMoves { get; set; }
         public List<ChessPiece> PieceList { get; set; }
 
         public List<ChessPiece> CanKill { get; set; }
@@ -22,6 +28,7 @@ namespace ChessVer2
         public void Start()
         {
             CanKill = new List<ChessPiece>();
+            AllMoves = new List<string>();
             InitateGame();
             StartGame();
             
@@ -81,18 +88,18 @@ namespace ChessVer2
         public void SetupPieces()
         {
             Rook rook = new Rook(0,7);
-            rook.id = 1;
-            PieceList.Add(rook);
+             rook.id = 1;
+             PieceList.Add(rook);
 
-            Rook rook2 = new Rook(7,7);
-            rook.id = 1;
-            PieceList.Add(rook2);
+             /*Rook rook2 = new Rook(7,7);
+             rook.id = 1;
+             PieceList.Add(rook2);*/
 
-            Knight knight = new Knight(6,7);
-            knight.id = 2;
-            PieceList.Add(knight);
+             Knight knight = new Knight(6,7);
+             knight.id = 2;
+             PieceList.Add(knight);
 
-            Knight knight2 = new Knight(1,7);
+            /*Knight knight2 = new Knight(1,7);
             knight.id = 3;
             PieceList.Add(knight2);
 
@@ -102,8 +109,13 @@ namespace ChessVer2
             Bishop bishop2 = new Bishop(5,7);
             PieceList.Add(bishop2);
 
+<<<<<<< HEAD
             Queen queen = new Queen(3,7);
             PieceList.Add(queen);
+=======
+           Queen queen = new Queen(3,7);
+            PieceList.Add(queen);*/
+>>>>>>> 765a182e3a7a49d9a6aa6cf6164af7de6fb4b5a7
 
             Pawn pawn = new Pawn(0,6);
             PieceList.Add(pawn);
@@ -116,6 +128,7 @@ namespace ChessVer2
 
             Pawn pawn4 = new Pawn(3, 6);
             PieceList.Add(pawn4);
+<<<<<<< HEAD
 
             Pawn pawn5=new Pawn(4,6);
             PieceList.Add(pawn5);
@@ -129,6 +142,10 @@ namespace ChessVer2
             Pawn pawn8=new Pawn(7,6);
             PieceList.Add(pawn8);
             
+=======
+
+
+>>>>>>> 765a182e3a7a49d9a6aa6cf6164af7de6fb4b5a7
         }
 
         public void PrintPieceOnBoard(List<ChessPiece> PieceList)
@@ -159,6 +176,16 @@ namespace ChessVer2
 
         public void MovePiece(ChessPiece pieceToMove, string coordinates)
         {
+            /* Console.SetCursorPosition(0, 17);
+             Console.WriteLine(pieceToMove.Name);
+             foreach (var item in pieceToMove.TurnAvailableMoves[0][0])
+             {
+                
+                 Console.WriteLine(item);
+             }
+             Console.ReadLine();*/
+            
+
             string[] newCoordX = coordinates.Split(',');
             string[] newCoordY = newCoordX[1].Split('.');
             int newX = int.Parse(newCoordX[0]);
@@ -172,36 +199,94 @@ namespace ChessVer2
             Console.SetCursorPosition(pieceToMove.PosX, pieceToMove.PosY);
             Console.Write(pieceToMove.Name);
             System.Threading.Thread.Sleep(100);
+
+            foreach (var piece in PieceList)
+            {
+                var tempx = piece.PosX;
+                var tempy = piece.PosY;
+
+                foreach (var item in PieceList)
+                {
+                    if(piece!=item)
+                    {
+                        if(item.PosX == tempx && item.PosY == tempy ){
+                            
+                            countSameTile++;
+                            Console.SetCursorPosition(20, 20);
+                            Console.WriteLine("Same tile {0}.", countSameTile);
+                            Console.ReadLine();
+                            //System.Threading.Thread.Sleep(5000);
+                        }
+                    }
+                }
+            }
+
+            
+
         }
 
         public int GetRandomNumber(List<string> coords)
         {
             Random rnd = new Random();
+
             
-            int max = coords.Count;
-            int min = 0;
-            if (max == min)
-            {
-                return 0;
-            }
+
+            int max = coords.Count+1;
+            int min = 1;
             int randomNumber = rnd.Next(min, max);
-            return randomNumber;
+
+            /*Console.SetCursorPosition(0, 12);
+            Console.WriteLine("               ");
+            Console.WriteLine("               ");
+            Console.WriteLine("               ");
+
+            Console.SetCursorPosition(0, 12);
+            Console.WriteLine("max: {0}", max);
+            Console.WriteLine("min: {0}", min);
+            Console.WriteLine("RND: {0}", randomNumber);
+            Console.ReadLine();
+
+            Console.SetCursorPosition(20, 22);
+            Console.WriteLine("First random: {0}. secon random: {1}.",CountRndOne, CountRndTwo);*/
+           
+
+            
+            return randomNumber-1;
         }
         
 
         public int GetRandomNumber(List<ChessPiece> pieces)
         {
             Random rnd = new Random();
-            int max = pieces.Count;
-            int min = 0;
+            int max = pieces.Count+1;
+            int min = 1;
             int randomNumber = rnd.Next(min, max);
-            return randomNumber;
+            return randomNumber-1;
         }
 
         public ChessPiece PickPiece(List <ChessPiece> pieces)
         {
-            int randomNumber = GetRandomNumber(pieces);
+            int randomNumber = 0;
+            
+            bool nullNumber = false;
+
+            while (!nullNumber)
+            {
+                randomNumber = GetRandomNumber(pieces);
+
+                if (pieces[randomNumber].TurnAvailableMoves.Count != 0)
+                {
+                    
+                    nullNumber = true;
+                }
+
+                
+                
+            }
             return pieces[randomNumber];
+            
+
+            
         }
 
         private void GenerateMoveOptions(List<ChessPiece> PieceList)
@@ -239,6 +324,8 @@ namespace ChessVer2
 
                     var pieceMovementLength = int.Parse(getDirectionYAndLength[1]);
 
+                   
+
                     var outOfBounds = false;
                     var friendlyAhead = false;
                     var enemyAhead = false;
@@ -268,6 +355,7 @@ namespace ChessVer2
                             currentY = currentY + addY;
                             var addCoordinate = currentX + "," + currentY;
                             coordinates.Add(addCoordinate);
+                            AllMoves.Add(addCoordinate);
                         }
                         else
                         {
@@ -291,7 +379,7 @@ namespace ChessVer2
                 friendlyX = piece.PosX;
                 friendlyY = piece.PosY;
 
-                if (friendlyX == toMoveX && friendlyX == toMoveY)
+                if (friendlyX == toMoveX && friendlyY == toMoveY)
                 {
                     count++;
                     Console.SetCursorPosition(20, 16);
