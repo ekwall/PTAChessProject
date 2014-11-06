@@ -102,10 +102,10 @@ namespace ChessVer2
             Bishop bishop2 = new Bishop(5,7);
             PieceList.Add(bishop2);
 
-           Queen queen = new Queen(3,7);
+            Queen queen = new Queen(3,7);
             PieceList.Add(queen);
 
-            /* Pawn pawn = new Pawn(0,6);
+            Pawn pawn = new Pawn(0,6);
             PieceList.Add(pawn);
 
             Pawn pawn2 = new Pawn(1, 6);
@@ -114,38 +114,20 @@ namespace ChessVer2
             Pawn pawn3 = new Pawn(2, 6);
             PieceList.Add(pawn3);
 
-            Pawn pawn4 = new Pawn(4, 4);
-            PieceList.Add(pawn4);*/
-
-            
-
-            
-
-           
-            
-           
-
-            /*
-
-            Pawn pawn = new Pawn();
-            pawn.PosX = 3;
-            pawn.PosY = 3;
-            pawn.Name = "p";
-            PieceList.Add(pawn);
-
-            Pawn pawn4 = new Pawn();
-            pawn.PosX = 4;
-            pawn.PosY = 4;
-            pawn.Name = "p";
+            Pawn pawn4 = new Pawn(3, 6);
             PieceList.Add(pawn4);
 
-            Pawn pawn2 = new Pawn();
-            pawn.PosX = 5;
-            pawn.PosY = 5;
-            pawn.Name = "p";
-            PieceList.Add(pawn2);
-            */
+            Pawn pawn5=new Pawn(4,6);
+            PieceList.Add(pawn5);
+
+            Pawn pawn6=new Pawn(5,6);
+            PieceList.Add(pawn6);
+
+            Pawn pawn7=new Pawn(6,6);
+            PieceList.Add(pawn7);
             
+            Pawn pawn8=new Pawn(7,6);
+            PieceList.Add(pawn8);
             
         }
 

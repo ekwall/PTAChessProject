@@ -13,7 +13,7 @@ namespace ChessVer2
 
             PosX = x;
             PosY = y;
-            Name = "d";
+            Name = "D";
             Coordinates = new List<string>();
 
             //Piece movements
