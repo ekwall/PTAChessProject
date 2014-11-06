@@ -19,6 +19,9 @@ namespace ChessVer2
 
         public List<string> AllMoves { get; set; }
         public List<ChessPiece> PieceList { get; set; }
+        
+
+
 
         public List<ChessPiece> CanKill { get; set; }
 
@@ -99,6 +102,9 @@ namespace ChessVer2
              knight.id = 2;
              PieceList.Add(knight);
 
+            King king = new King(2, 2);
+             PieceList.Add(king);
+
             /*Knight knight2 = new Knight(1,7);
             knight.id = 3;
             PieceList.Add(knight2);
@@ -109,43 +115,30 @@ namespace ChessVer2
             Bishop bishop2 = new Bishop(5,7);
             PieceList.Add(bishop2);
 
-<<<<<<< HEAD
+
             Queen queen = new Queen(3,7);
             PieceList.Add(queen);
-=======
+
            Queen queen = new Queen(3,7);
             PieceList.Add(queen);*/
->>>>>>> 765a182e3a7a49d9a6aa6cf6164af7de6fb4b5a7
 
-            Pawn pawn = new Pawn(0,6);
-            PieceList.Add(pawn);
 
-            Pawn pawn2 = new Pawn(1, 6);
-            PieceList.Add(pawn2);
+            
 
-            Pawn pawn3 = new Pawn(2, 6);
-            PieceList.Add(pawn3);
 
-            Pawn pawn4 = new Pawn(3, 6);
-            PieceList.Add(pawn4);
-<<<<<<< HEAD
-
-            Pawn pawn5=new Pawn(4,6);
+           Pawn pawn5=new Pawn(4,6);
             PieceList.Add(pawn5);
 
             Pawn pawn6=new Pawn(5,6);
             PieceList.Add(pawn6);
 
-            Pawn pawn7=new Pawn(6,6);
+            /* Pawn pawn7=new Pawn(6,6);
             PieceList.Add(pawn7);
             
             Pawn pawn8=new Pawn(7,6);
-            PieceList.Add(pawn8);
+            PieceList.Add(pawn8);*/
             
-=======
 
-
->>>>>>> 765a182e3a7a49d9a6aa6cf6164af7de6fb4b5a7
         }
 
         public void PrintPieceOnBoard(List<ChessPiece> PieceList)
@@ -167,9 +160,26 @@ namespace ChessVer2
 
         public string GetCoordinates(ChessPiece pieceToMove)
         {
-            int randNumber = GetRandomNumber(pieceToMove.TurnAvailableMoves[0]);
+            string Coords;
+           
+            try
+            {
+                int randNumber = GetRandomNumber(pieceToMove.TurnAvailableMoves[0]);
+                Coords = pieceToMove.TurnAvailableMoves[0][randNumber];
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
 
-            string Coords = pieceToMove.TurnAvailableMoves[0][randNumber];
+
+            
+
+           
+                
+            
+            //string Coords = pieceToMove.TurnAvailableMoves[0][randNumber];
 
             return Coords;
         }
@@ -221,7 +231,10 @@ namespace ChessVer2
                 }
             }
 
-            
+            foreach (var piece in PieceList)
+            {
+                piece.TurnAvailableMoves.Clear();
+            }
 
         }
 
@@ -264,20 +277,27 @@ namespace ChessVer2
             return randomNumber-1;
         }
 
+        // TODO: Här i finns ett fel.
+        // Pjäs (bonde) som nåt slutet på brädet och inte får en riktning tilldelat
+        // Kan fortfarande väljas. Då kraschar appen då det inte finns en position att flytta till. 
         public ChessPiece PickPiece(List <ChessPiece> pieces)
         {
             int randomNumber = 0;
             
-            bool nullNumber = false;
+            bool nullNumber = true;
 
-            while (!nullNumber)
+            while (nullNumber)
             {
                 randomNumber = GetRandomNumber(pieces);
 
-                if (pieces[randomNumber].TurnAvailableMoves.Count != 0)
+                if (pieces[randomNumber].TurnAvailableMoves.Count == 0)
                 {
-                    
+
                     nullNumber = true;
+                }
+                if (pieces[randomNumber].TurnAvailableMoves.Count > 0)
+                {
+                    nullNumber = false;
                 }
 
                 
@@ -364,7 +384,11 @@ namespace ChessVer2
                     }
                 }
                  piece.TurnAvailableMoves.Add(coordinates);
+
+                //TODO: ska en ny lista som innehåller alla pjäser som kan gå åt ett håll.
+               // om ingen riktning sparas, lägg till i ny lista:
             }
+
         }
 
         public bool CheckIfFriendlyAhead(int currentX, int currentY, int addX, int addY, List<ChessPiece> friendyPieces)

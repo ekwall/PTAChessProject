@@ -27,6 +27,7 @@ namespace ChessVer2
 
 
             Coordinates.Add(moveUp);
+            Coordinates.Add(moveUp);
             
             
             

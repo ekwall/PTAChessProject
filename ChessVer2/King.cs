@@ -25,7 +25,7 @@ namespace ChessVer2
             string moveRightDiagonallyDown = "1,1.1";
             string moveDown = "0,1.1";
             string moveLeftDiagonallyDown = "-1,1.1";
-            string moveLeft = "-1,0";
+            string moveLeft = "-1,0.1";
             string moveLeftDiagonallyUp = "-1,-1.1";
 
             //List<string> Coordinates = new List <string>();
