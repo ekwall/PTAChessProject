@@ -19,14 +19,16 @@ namespace ChessVer2
             Coordinates = new List<string>();
 
             string moveUp = "0,-1.1";
-            string moveDown = "0,1.1";
+            
+            
             
           
             
 
 
             Coordinates.Add(moveUp);
-            Coordinates.Add(moveDown);
+            
+            
             
             
            
