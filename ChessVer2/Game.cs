@@ -19,6 +19,7 @@ namespace ChessVer2
 
         public List<string> AllMoves { get; set; }
         public List<ChessPiece> PieceList { get; set; }
+        public List<ChessPiece> PieceThatCanMove { get; set; }
         
 
 
@@ -52,12 +53,24 @@ namespace ChessVer2
         {
             while (true)
             {
+                ClearTempLists(PieceThatCanMove);
+
                 GenerateMoveOptions(PieceList);
-                ChessPiece pieceToMove = PickPiece(PieceList);
+                ChessPiece pieceToMove = PickPiece(PieceThatCanMove);
                 string Coordinates = GetCoordinates(pieceToMove);
                 MovePiece(pieceToMove, Coordinates);
             }
         }
+        //De pjäser som inte kan rör sig tas bort ur listan PieceThatCanMove, har testkört och sett att det fungerar. 
+        //Endast de pjäser som fortfarande har drag kvar återstår i listan.
+        private void ClearTempLists(List<ChessPiece> pieces)
+        {
+            pieces.Clear(); 
+        }
+        //private void ClearTempLists()
+        //{
+            //pieces.Clear();
+        //}
 
         /* ********** INITIATE GAME BELOW ********************** */
 
@@ -72,6 +85,8 @@ namespace ChessVer2
         public void CreatePieces()
         {
             PieceList = new List<ChessPiece>();
+            PieceThatCanMove = new List<ChessPiece>();
+
         }
 
         public void PrintBoard()
@@ -90,7 +105,7 @@ namespace ChessVer2
 
         public void SetupPieces()
         {
-            Rook rook = new Rook(0,7);
+             Rook rook = new Rook(0,7);
              rook.id = 1;
              PieceList.Add(rook);
 
@@ -102,8 +117,11 @@ namespace ChessVer2
              knight.id = 2;
              PieceList.Add(knight);
 
-            King king = new King(2, 2);
+             King king = new King(2, 2);
              PieceList.Add(king);
+
+             Queen queen = new Queen(3, 7);
+             PieceList.Add(queen);
 
             /*Knight knight2 = new Knight(1,7);
             knight.id = 3;
@@ -126,17 +144,17 @@ namespace ChessVer2
             
 
 
-           Pawn pawn5=new Pawn(4,6);
+          Pawn pawn5=new Pawn(4,6);
             PieceList.Add(pawn5);
 
             Pawn pawn6=new Pawn(5,6);
             PieceList.Add(pawn6);
 
-            /* Pawn pawn7=new Pawn(6,6);
+            Pawn pawn7=new Pawn(6,6);
             PieceList.Add(pawn7);
             
             Pawn pawn8=new Pawn(7,6);
-            PieceList.Add(pawn8);*/
+            PieceList.Add(pawn8);
             
 
         }
@@ -167,7 +185,7 @@ namespace ChessVer2
                 int randNumber = GetRandomNumber(pieceToMove.TurnAvailableMoves[0]);
                 Coords = pieceToMove.TurnAvailableMoves[0][randNumber];
             }
-            catch (Exception)
+            catch (Exception exc)
             {
                 
                 throw;
@@ -383,7 +401,15 @@ namespace ChessVer2
                         }
                     }
                 }
-                 piece.TurnAvailableMoves.Add(coordinates);
+
+                // Check if there is a coordinate to add. If there is, add the piece movements to list TurnAvailableMoves
+                // This statement prevents the app to crash if a piece cannot move but is choosen to try to move.
+                // As the piece that cannot move do not contain a "TurnAvailableMoves" list, another piece is picked.
+                if (coordinates.Count >= 1)
+                {
+                    piece.TurnAvailableMoves.Add(coordinates);
+                    PieceThatCanMove.Add(piece);                   
+                }
 
                 //TODO: ska en ny lista som innehåller alla pjäser som kan gå åt ett håll.
                // om ingen riktning sparas, lägg till i ny lista:
