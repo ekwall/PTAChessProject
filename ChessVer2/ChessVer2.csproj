@@ -41,21 +41,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bishop.cs" />
+    <Compile Include="MoveData.cs" />
+    <Compile Include="pieces\Bishop.cs" />
     <Compile Include="ChessPiece.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="IPlayer.cs" />
-    <Compile Include="King.cs" />
-    <Compile Include="Knight.cs" />
-    <Compile Include="Pawn.cs" />
+    <Compile Include="pieces\King.cs" />
+    <Compile Include="pieces\Knight.cs" />
+    <Compile Include="pieces\Pawn.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Queen.cs" />
-    <Compile Include="Rook.cs" />
+    <Compile Include="pieces\Queen.cs" />
+    <Compile Include="pieces\Rook.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

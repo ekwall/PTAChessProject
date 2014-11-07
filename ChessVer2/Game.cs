@@ -9,26 +9,17 @@ namespace ChessVer2
 {   
     class Game
     {
-        private int OOBCounter = 0;
-        private int count = 0;
-        private int movestried = 0;
-        private int CountRndOne = 0;
-        private int CountRndTwo= 0;
-
-        private int countSameTile = 0;
-
-        public List<string> AllMoves { get; set; }
-        public List<ChessPiece> PieceList { get; set; }
+        private int OOBCounter, count, movestried, CountRndOne, CountRndTwo, countSameTile;
         public List<ChessPiece> PieceThatCanMove { get; set; }
-        
-
-
-
+        public List<string> AllMoves { get; set; }
         public List<ChessPiece> CanKill { get; set; }
-
-        
-
-        
+        public Player player;
+        //public List<ChessPiece> PieceList { get; set; }
+       // public Player blackPlayer;       
+        public Game()
+        {
+            player = new Player();
+        }
         public void Start()
         {
             CanKill = new List<ChessPiece>();
@@ -41,11 +32,20 @@ namespace ChessVer2
         // This method controls the initiatiation of the game
         public void InitateGame()
         {
-            CreatePlayers();
+            
+
+            // skicka till player
             CreatePieces();
+
+            // skicka till projekt print gui
             PrintBoard();
             SetupPieces();
-            PrintPieceOnBoard(PieceList);
+
+
+
+          
+
+            PrintPieceOnBoard(player.PieceList);
 
         }
 
@@ -55,7 +55,7 @@ namespace ChessVer2
             {
                 ClearTempLists(PieceThatCanMove);
 
-                GenerateMoveOptions(PieceList);
+                GenerateMoveOptions(player.PieceList);
                 ChessPiece pieceToMove = PickPiece(PieceThatCanMove);
                 string Coordinates = GetCoordinates(pieceToMove);
                 MovePiece(pieceToMove, Coordinates);
@@ -74,17 +74,11 @@ namespace ChessVer2
 
         /* ********** INITIATE GAME BELOW ********************** */
 
-        public void CreatePlayers()
-        {
-            Player whitePlayer = new Player();
-            Player blackPlayer = new Player();
-            //Player playerOne = new Player();
-            //TODO: Create piece list.
-        }
+       
 
         public void CreatePieces()
         {
-            PieceList = new List<ChessPiece>();
+            
             PieceThatCanMove = new List<ChessPiece>();
 
         }
@@ -105,61 +99,61 @@ namespace ChessVer2
 
         public void SetupPieces()
         {
-             Rook rook = new Rook(0,7);
-             rook.id = 1;
-             PieceList.Add(rook);
+           //  Rook rook = new Rook(0,7);
+           //  rook.id = 1;
+           //  PieceList.Add(rook);
 
-             /*Rook rook2 = new Rook(7,7);
-             rook.id = 1;
-             PieceList.Add(rook2);*/
+           //  /*Rook rook2 = new Rook(7,7);
+           //  rook.id = 1;
+           //  PieceList.Add(rook2);*/
 
-             Knight knight = new Knight(6,7);
-             knight.id = 2;
-             PieceList.Add(knight);
+           //  Knight knight = new Knight(6,7);
+           //  knight.id = 2;
+           //  PieceList.Add(knight);
 
-             King king = new King(2, 2);
-             PieceList.Add(king);
+           //  King king = new King(2, 2);
+           //  PieceList.Add(king);
 
-             Queen queen = new Queen(3, 7);
-             PieceList.Add(queen);
+           //  Queen queen = new Queen(3, 7);
+           //  PieceList.Add(queen);
 
-            /*Knight knight2 = new Knight(1,7);
-            knight.id = 3;
-            PieceList.Add(knight2);
+           // /*Knight knight2 = new Knight(1,7);
+           // knight.id = 3;
+           // PieceList.Add(knight2);
 
-            Bishop bishop = new Bishop(2,7);
-            PieceList.Add(bishop);
+           // Bishop bishop = new Bishop(2,7);
+           // PieceList.Add(bishop);
 
-            Bishop bishop2 = new Bishop(5,7);
-            PieceList.Add(bishop2);
+           // Bishop bishop2 = new Bishop(5,7);
+           // PieceList.Add(bishop2);
 
 
-            Queen queen = new Queen(3,7);
-            PieceList.Add(queen);
+           // Queen queen = new Queen(3,7);
+           // PieceList.Add(queen);
 
-           Queen queen = new Queen(3,7);
-            PieceList.Add(queen);*/
+           //Queen queen = new Queen(3,7);
+           // PieceList.Add(queen);*/
 
 
             
 
 
-          Pawn pawn5=new Pawn(4,6);
-            PieceList.Add(pawn5);
+          //Pawn pawn5=new Pawn(4,6);
+          //  PieceList.Add(pawn5);
 
-            Pawn pawn6=new Pawn(5,6);
-            PieceList.Add(pawn6);
+          //  Pawn pawn6=new Pawn(5,6);
+          //  PieceList.Add(pawn6);
 
-            Pawn pawn7=new Pawn(6,6);
-            PieceList.Add(pawn7);
+          //  Pawn pawn7=new Pawn(6,6);
+          //  PieceList.Add(pawn7);
             
-            Pawn pawn8=new Pawn(7,6);
-            PieceList.Add(pawn8);
+          //  Pawn pawn8=new Pawn(7,6);
+          //  PieceList.Add(pawn8);
             
 
         }
 
-        public void PrintPieceOnBoard(List<ChessPiece> PieceList)
+        public void PrintPieceOnBoard(List <ChessPiece> PieceList)
         {
 
             foreach (var piece in PieceList)
@@ -169,6 +163,21 @@ namespace ChessVer2
             }
             Console.SetCursorPosition(10, 10);
         }
+
+        /*
+        public void PrintPieceOnBoard(<ChessPiece> PieceList)
+        {
+
+            foreach (var piece in PieceList)
+            {
+                Console.SetCursorPosition(piece.PosX, piece.PosY);
+                Console.Write(piece.Name);
+            }
+            Console.SetCursorPosition(10, 10);
+        }*/
+
+
+
 
         /* ################### INITATE GAME END ########################## */
 
@@ -228,16 +237,17 @@ namespace ChessVer2
             Console.Write(pieceToMove.Name);
             System.Threading.Thread.Sleep(100);
 
-            foreach (var piece in PieceList)
+            foreach (var piece in player.PieceList)
             {
                 var tempx = piece.PosX;
                 var tempy = piece.PosY;
 
-                foreach (var item in PieceList)
+                foreach (var item in player.PieceList)
                 {
                     if(piece!=item)
                     {
-                        if(item.PosX == tempx && item.PosY == tempy ){
+                        if(item.PosX == tempx && item.PosY == tempy )
+                        {
                             
                             countSameTile++;
                             Console.SetCursorPosition(20, 20);
@@ -249,7 +259,7 @@ namespace ChessVer2
                 }
             }
 
-            foreach (var piece in PieceList)
+            foreach (var piece in player.PieceList)
             {
                 piece.TurnAvailableMoves.Clear();
             }
@@ -329,12 +339,12 @@ namespace ChessVer2
 
         private void GenerateMoveOptions(List<ChessPiece> PieceList)
         {
-            CalculatePieceMovement(PieceList);
+            CalculatePieceMovement(player.PieceList);
         }
 
         private void CalculatePieceMovement(List<ChessPiece> PieceList)
         {
-            foreach (var piece in PieceList)
+            foreach (var piece in player.PieceList)
             {
                 piece.TurnAvailableMoves = new List<List<string>>();
                 List<string> coordinates = new List<string>();
