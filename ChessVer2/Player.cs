@@ -10,10 +10,23 @@ namespace ChessVer2
     {
         public List<ChessPiece> PieceList { get; set; }
         public bool IsWhite { get; set; }
-        public Player()
+        public bool MyTurn { get; set; }
+        public Player(bool isWhite, bool myTurn)
         {
+            this.IsWhite = isWhite;
+            this.MyTurn = myTurn;
+
             PieceList = new List<ChessPiece>();
-            AddWhitePiece("0,-1.1");
+
+            if (IsWhite)
+            {
+                AddWhitePiece("0,-1.1");
+            }
+            else
+            {
+                AddBlackPiece("0,1.1");
+            }
+            
         }
         // Försök till att i en metod skapa nya pjäser.
         //public void CreateChessPiece(int x, int y, ChessPiece piece)
@@ -96,7 +109,7 @@ namespace ChessVer2
 
         }
 
-       /* public void AddBlackPiece(string movement)
+        public void AddBlackPiece(string movement)
         {
             Pawn pawn = new Pawn(0, 1, movement);
             pawn.id = 1;
@@ -160,7 +173,7 @@ namespace ChessVer2
             Queen queen = new Queen(3, 0);
             PieceList.Add(queen);
 
-        }*/
+        }
 
 
 

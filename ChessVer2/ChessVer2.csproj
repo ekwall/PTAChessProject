@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GUI.cs" />
     <Compile Include="MoveData.cs" />
     <Compile Include="pieces\Bishop.cs" />
     <Compile Include="ChessPiece.cs" />

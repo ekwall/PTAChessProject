@@ -37,3 +37,9 @@ C:\Users\Andreas\Documents\Visual Studio 2013\Projects\ChessGame\ChessProjectNew
 C:\Users\Andreas\Documents\Visual Studio 2013\Projects\ChessGame\ChessProjectNewMovement\ChessVer2\bin\Debug\ChessVer2.pdb
 C:\Users\Andreas\Documents\Visual Studio 2013\Projects\ChessGame\ChessProjectNewMovement\ChessVer2\obj\Debug\ChessVer2.csprojResolveAssemblyReference.cache
 >>>>>>> eb73b8e3a922329ce533ffb7d94fe42f54e7ef4d
+C:\Users\Ekwall\Documents\Visual Studio 2013\Projects\ChessGameFullMovement\PTAChessProject\ChessVer2\bin\Debug\ChessVer2.exe.config
+C:\Users\Ekwall\Documents\Visual Studio 2013\Projects\ChessGameFullMovement\PTAChessProject\ChessVer2\obj\Debug\ChessVer2.exe
+C:\Users\Ekwall\Documents\Visual Studio 2013\Projects\ChessGameFullMovement\PTAChessProject\ChessVer2\obj\Debug\ChessVer2.pdb
+C:\Users\Ekwall\Documents\Visual Studio 2013\Projects\ChessGameFullMovement\PTAChessProject\ChessVer2\bin\Debug\ChessVer2.exe
+C:\Users\Ekwall\Documents\Visual Studio 2013\Projects\ChessGameFullMovement\PTAChessProject\ChessVer2\bin\Debug\ChessVer2.pdb
+C:\Users\Ekwall\Documents\Visual Studio 2013\Projects\ChessGameFullMovement\PTAChessProject\ChessVer2\obj\Debug\ChessVer2.csprojResolveAssemblyReference.cache
